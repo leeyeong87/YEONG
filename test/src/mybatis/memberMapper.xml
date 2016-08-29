@@ -3,10 +3,25 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-
-	
+<!-- insert -->
+	<insert id="addMem" parameterType="test.vo.MembersVo">
+		insert into member values(#{id}, #{pwd}, #{email}, #{phone}, sysdate)
+	</insert>
+<!-- update -->
+	<update id="upMem" parameterType="test.vo.MembersVo">
+		update member set pwd=#{pwd} where id=#{id}
+	</update>
+<!-- delete -->
+	<delete id="delMem" parameterType="test.vo.MembersVo">
+		delete member where id=#{id}
+	</delete>
+<!-- select -->
 	<select id="getlist" resultType="test.vo.MembersVo">
 		select * from member
+	</select>
+	
+	<select id="getid" resultType="test.vo.MembersVo">
+		select * from member where id=#{id}
 	</select>
 	
 </mapper>
